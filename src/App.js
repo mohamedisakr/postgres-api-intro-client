@@ -1,10 +1,14 @@
 import React, { Fragment } from "react";
 import "./App.css";
 
+import StudentAddBox from "./components/StudentAddBox";
+
 function App() {
   return (
     <Fragment>
-      <h3>This is the main page</h3>
+      <div className="container">
+        <StudentAddBox></StudentAddBox>
+      </div>
     </Fragment>
   );
 }
