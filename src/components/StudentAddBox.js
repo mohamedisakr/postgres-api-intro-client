@@ -1,24 +1,25 @@
 import React, { Fragment, useState } from "react";
-// require("dotenv").config();
 
 const StudentAddBox = () => {
   const [studentNumber, setStudentNumber] = useState();
   const [classIn, setClassIn] = useState();
   const [major, setMajor] = useState("");
   const [studentName, setStudentName] = useState("");
+  const url = "http://localhost:5000/api/students";
 
   const submitFormHandler = async (event) => {
     event.preventDefault();
     try {
       const newStudent = { studentNumber, classIn, major, studentName };
       //   const res = await fetch(process.env.REACT_APP_STUDENT_ROUTE, {
-      const res = await fetch("http://localhost:5000/api/students", {
+      const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        mode: "no-cors",
         body: JSON.stringify(newStudent),
       });
 
-      console.log(res);
+      // console.log(res);
     } catch (err) {
       console.error(err.message);
     }
