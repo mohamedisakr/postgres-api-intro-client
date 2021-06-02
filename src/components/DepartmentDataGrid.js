@@ -1,23 +1,23 @@
 import React, { Fragment, useState, useEffect } from "react";
 
-const StudentDataGrid = () => {
-  const [students, setStudents] = useState([]);
-  const url = "http://localhost:5000/api/students";
-  // const url = "http://localhost:5000/";
+const DepartmentDataGrid = () => {
+  const [departments, setDepartments] = useState([]);
+  const url = `${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_DEPARTMENT_ROUTE}`;
 
-  const deleteStudentHandler = async (id) => {
+  const deleteDepartmentHandler = async (id) => {
     try {
-      const studentToDelete = await fetch(`${url}/${id}`, { method: "DELETE" });
-      setStudents((students) =>
-        students.filter((student) => student.student_id !== id)
+      const departmentToDelete = await fetch(`${url}/${id}`, {
+        method: "DELETE",
+      });
+      setDepartments((departments) =>
+        departments.filter((department) => department.department_id !== id)
       );
-      // console.log(studentToDelete);
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  const getAllStudents = async () => {
+  const getAllDepartments = async () => {
     try {
       const res = await fetch(url, {
         // mode: "cors",
@@ -28,47 +28,41 @@ const StudentDataGrid = () => {
       // console.log(`response : ${res}`);
       const data = await res.json();
       // console.log(data);
-      setStudents(data);
+      setDepartments(data);
     } catch (err) {
       console.error(err.message);
     }
   };
 
   useEffect(() => {
-    getAllStudents();
+    getAllDepartments();
   }, []);
 
-  console.log(students);
+  console.log(departments);
 
   return (
     <Fragment>
       <div className="mt-5">
-        <h3>Student List</h3>
-        <table className="table mt-5 text-center">
+        <h3>Department List</h3>
+        <table className="table mt-5 text-center table-striped">
           <thead>
             <tr>
-              {/* studentNumber, classIn, major, studentName */}
-              <th>Student Number</th>
-              <th>Class</th>
-              <th>Major</th>
-              <th>Student Name</th>
-              {/* <th>Edit</th>
-              <th>Delete</th> */}
+              <th>Department Title</th>
             </tr>
           </thead>
           <tbody>
-            {/* let { student_id, student_number, major, student_name } = student; */}
-            {students.map((student) => (
-              <tr key={student.student_id}>
-                <td>{student.student_number}</td>
-                <td>{student.class}</td>
-                <td>{student.major}</td>
-                <td>{student.student_name}</td>
-                <td>Edit</td>
+            {departments.map((department) => (
+              <tr key={department.department_id}>
+                <td>{department.department_title}</td>
+                <td>
+                  <button className="btn btn-success">Edit</button>
+                </td>
                 <td>
                   <button
                     className="btn btn-danger"
-                    onClick={() => deleteStudentHandler(student.student_id)}
+                    onClick={() =>
+                      deleteDepartmentHandler(department.department_id)
+                    }
                   >
                     Delete
                   </button>
@@ -82,4 +76,4 @@ const StudentDataGrid = () => {
   );
 };
 
-export default StudentDataGrid;
+export default DepartmentDataGrid;
