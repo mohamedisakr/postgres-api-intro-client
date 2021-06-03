@@ -38,7 +38,26 @@ const DepartmentDataGrid = () => {
     getAllDepartments();
   }, []);
 
-  console.log(departments);
+  // console.log(departments);
+
+  const populateDepartments = () => {
+    return departments.map((department) => (
+      <tr key={department.department_id}>
+        <td>{department.department_title}</td>
+        <td>
+          <button className="btn btn-sm btn-outline-danger">Edit</button>
+        </td>
+        <td>
+          <button
+            className="btn btn-sm btn-outline-warning"
+            onClick={() => deleteDepartmentHandler(department.department_id)}
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    ));
+  };
 
   return (
     <Fragment>
@@ -50,26 +69,7 @@ const DepartmentDataGrid = () => {
               <th>Department Title</th>
             </tr>
           </thead>
-          <tbody>
-            {departments.map((department) => (
-              <tr key={department.department_id}>
-                <td>{department.department_title}</td>
-                <td>
-                  <button className="btn btn-success">Edit</button>
-                </td>
-                <td>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() =>
-                      deleteDepartmentHandler(department.department_id)
-                    }
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          <tbody>{populateDepartments()}</tbody>
         </table>
       </div>
     </Fragment>
