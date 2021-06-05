@@ -32,17 +32,17 @@ const DepartmentAddBox = () => {
     console.log(url);
   };
 
-  return (
-    <Fragment>
-      <h1 className="text-center mt-5">Welcome To Student Section</h1>
-      <h3>Add New Department:</h3>
+  const DepartmentAddForm = () => {
+    return (
       <form onSubmit={submitFormHandler} className="mt-5">
-        <div className="mb-3">
-          <label htmlFor="departmentTitleInput" className="form-label">
+        <div className="form-group mb-5">
+          <label htmlFor="departmentTitleInput" className="text-muted">
             Department Title:
           </label>
           <input
             type="text"
+            placeholder="Department title"
+            required
             name="departmentTitleInput"
             id="departmentTitleInput"
             className="form-control"
@@ -50,9 +50,19 @@ const DepartmentAddBox = () => {
             onChange={departmentTitleChangeHandler}
           />
         </div>
-        <button className="btn btn-primary">Add Department</button>
+        <div>
+          <button className="btn btn-primary">Add Department</button>
+        </div>
       </form>
-    </Fragment>
+    );
+  };
+
+  return (
+    <div className="container p-5">
+      <h1 className="text-center mt-5">Welcome To Student Section</h1>
+      <h3>Add New Department:</h3>
+      {DepartmentAddForm()}
+    </div>
   );
 };
 
