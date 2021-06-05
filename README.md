@@ -1,6 +1,7 @@
 # Feature
 1. axios
 2. show messages (insert - update - delete)
+3. Localization 
 
 # Getting Started with Create React App
 

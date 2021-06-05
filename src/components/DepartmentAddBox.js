@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
+import Nav from "../Nav";
 
 const DepartmentAddBox = () => {
   const [departmentTitle, setDepartmentTitle] = useState("");
@@ -58,7 +59,8 @@ const DepartmentAddBox = () => {
   };
 
   return (
-    <div className="container p-5">
+    <div className="container pb-5">
+      <Nav />
       <h1 className="text-center mt-5">Welcome To Student Section</h1>
       <h3>Add New Department:</h3>
       {DepartmentAddForm()}

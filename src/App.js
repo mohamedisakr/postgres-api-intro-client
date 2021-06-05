@@ -1,16 +1,15 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./App.css";
-import DepartmentAddBox from "./components/DepartmentAddBox";
+
 import DepartmentDataGrid from "./components/DepartmentDataGrid";
+import Nav from "./Nav";
 
 function App() {
   return (
-    <Fragment>
-      <div className="container p-5">
-        {/* <DepartmentAddBox /> */}
-        <DepartmentDataGrid />
-      </div>
-    </Fragment>
+    <div className="container pb-5">
+      <Nav />
+      <DepartmentDataGrid />
+    </div>
   );
 }
 
