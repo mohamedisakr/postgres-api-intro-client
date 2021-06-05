@@ -13,12 +13,9 @@ const DepartmentAddBox = () => {
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // mode: "no-cors",
         body: JSON.stringify(newDepartment),
-        // console.log(body);
       });
 
-      console.log(res);
       // reset all state variables
       setDepartmentTitle("");
       window.location = "/";
