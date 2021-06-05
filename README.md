@@ -1,5 +1,5 @@
 # Feature
-1. axios
+1. axios (axios vs fetch)
 2. show messages (insert - update - delete)
 3. Localization 
 

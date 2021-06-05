@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 
 const DepartmentDataGrid = () => {
   const [departments, setDepartments] = useState([]);
-  const url = `${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_DEPARTMENT_ROUTE}`;
+  const url = `${process.env.REACT_APP_BASE_SERVER_URL}${process.env.REACT_APP_DEPARTMENT_SERVER_ROUTE}`;
 
   const deleteDepartmentHandler = async (id) => {
     try {
@@ -20,14 +20,10 @@ const DepartmentDataGrid = () => {
   const getAllDepartments = async () => {
     try {
       const res = await fetch(url, {
-        // mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
-      // console.log(`response : ${res}`);
+
       const data = await res.json();
-      // console.log(data);
       setDepartments(data);
     } catch (err) {
       console.error(err.message);
@@ -38,16 +34,16 @@ const DepartmentDataGrid = () => {
     getAllDepartments();
   }, []);
 
-  // console.log(departments);
-
   const populateDepartments = () => {
     return departments.map((department) => (
       <tr key={department.department_id}>
-        <td>{department.department_title}</td>
-        <td>
+        <td className="col-8">
+          <p className="text-xl-left">{department.department_title.trim()}</p>
+        </td>
+        <td className="col-2">
           <button className="btn btn-sm btn-outline-danger">Edit</button>
         </td>
-        <td>
+        <td className="col-2">
           <button
             className="btn btn-sm btn-outline-warning"
             onClick={() => deleteDepartmentHandler(department.department_id)}

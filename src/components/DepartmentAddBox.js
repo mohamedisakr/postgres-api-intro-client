@@ -3,7 +3,7 @@ import Nav from "../Nav";
 
 const DepartmentAddBox = () => {
   const [departmentTitle, setDepartmentTitle] = useState("");
-  const url = `${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_DEPARTMENT_ROUTE}`;
+  const url = `${process.env.REACT_APP_BASE_SERVER_URL}${process.env.REACT_APP_DEPARTMENT_SERVER_ROUTE}`;
 
   const submitFormHandler = async (event) => {
     event.preventDefault();
