@@ -49,7 +49,7 @@ const DepartmentAddBox = () => {
           />
         </div>
         <div>
-          <button className="btn btn-primary">Add Department</button>
+          <button className="btn btn-primary">Add</button>
         </div>
       </form>
     );

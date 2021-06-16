@@ -13,11 +13,19 @@ const Nav = () => {
         <li className="nav-item">
           <Link
             className="nav-link"
-            to={`${process.env.REACT_APP_ADD_NEW_DEPARTMENT_ROUTE}`}
+            to="/adddept"
+            // to={`/${process.env.REACT_APP_ADD_NEW_DEPARTMENT_ROUTE}`}
           >
             Department
           </Link>
         </li>
+        {/* <li className="nav-item">
+          <Link className="nav-link" to="/">
+            {process.env.REACT_APP_ADD_NEW_DEPARTMENT_ROUTE
+              ? process.env.REACT_APP_ADD_NEW_DEPARTMENT_ROUTE
+              : "error"}
+          </Link>
+        </li> */}
       </ul>
     </nav>
   );

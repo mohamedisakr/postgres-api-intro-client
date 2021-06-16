@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const DepartmentDataGrid = () => {
   const [departments, setDepartments] = useState([]);
@@ -36,7 +37,60 @@ const DepartmentDataGrid = () => {
 
   const populateDepartments = () => {
     return departments.map((department) => (
-      <tr key={department.department_id}>
+      <div
+        className="row"
+        key={department.department_id}
+        style={{ borderBottom: "1px solid silver" }}
+      >
+        <div className="col pt-3 pb-2">
+          <div className="row">
+            <div className="col-md-10">{department.department_title}</div>
+
+            <div className="col-md-1">
+              <Link
+                to={`/editdept/${department.department_id}`}
+                className="btn btn-sm btn-outline-warning mr-1"
+              >
+                Update
+              </Link>
+            </div>
+            <div className="col-md-1">
+              <button
+                onClick={() =>
+                  deleteDepartmentHandler(department.department_id)
+                }
+                className="btn btn-sm btn-outline-danger ml-1"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    ));
+  };
+
+  return (
+    <Fragment>
+      <div className="container mt-5">
+        <h3>Department List</h3>
+        <div>{populateDepartments()}</div>
+        {/* <table className="table mt-5 text-center table-striped">
+          <thead>
+            <tr>
+              <th>Department Title</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table> */}
+      </div>
+    </Fragment>
+  );
+};
+
+export default DepartmentDataGrid;
+
+/*<tr key={department.department_id}>
         <td className="col-8">
           <p className="text-xl-left">{department.department_title.trim()}</p>
         </td>
@@ -51,25 +105,4 @@ const DepartmentDataGrid = () => {
             Delete
           </button>
         </td>
-      </tr>
-    ));
-  };
-
-  return (
-    <Fragment>
-      <div className="mt-5">
-        <h3>Department List</h3>
-        <table className="table mt-5 text-center table-striped">
-          <thead>
-            <tr>
-              <th>Department Title</th>
-            </tr>
-          </thead>
-          <tbody>{populateDepartments()}</tbody>
-        </table>
-      </div>
-    </Fragment>
-  );
-};
-
-export default DepartmentDataGrid;
+    </tr>*/
